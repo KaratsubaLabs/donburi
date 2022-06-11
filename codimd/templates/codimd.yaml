@@ -16,16 +16,16 @@ spec:
     spec:
       containers:
       - name: codimd
-        image: hackmdio/hackmd:2.4.1
+        image: {{ .Values.codimd.image }}
         ports:
-        - containerPort: 3000
+        - containerPort: {{ .Values.codimd.containerPort }}
         env:
         - name: CMD_DB_URL
           valueFrom:
-            secretKeyRef: { name: codimd-secret, key: connection-string }
+            secretKeyRef: { name: codimd-secret, key: connectionString }
         - name: CMD_SESSION_SECRET
           valueFrom:
-            secretKeyRef: { name: codimd-secret, key: session-secret }
+            secretKeyRef: { name: codimd-secret, key: sessionSecret }
 ---
 apiVersion: v1
 kind: Service
@@ -38,5 +38,5 @@ spec:
   ports:
   - protocol: TCP
     port: 3000
-    targetPort: 3000
+    targetPort: {{ .Values.codimd.containerPort }}
     nodePort: 30100

@@ -16,19 +16,19 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: postgres:11.6-alpine
+        image: {{ .Values.postgres.image }}
         ports:
         - containerPort: 5432
         env:
         - name: POSTGRES_USER
           valueFrom:
-            secretKeyRef: { name: codimd-secret, key: postgres-user }
+            secretKeyRef: { name: codimd-secret, key: postgresUser }
         - name: POSTGRES_PASSWORD
           valueFrom:
-            secretKeyRef: { name: codimd-secret, key: postgres-password }
+            secretKeyRef: { name: codimd-secret, key: postgresPassword }
         - name: POSTGRES_DB
           valueFrom:
-            secretKeyRef: { name: codimd-secret, key: postgres-db }
+            secretKeyRef: { name: codimd-secret, key: postgresDatabase }
 ---
 apiVersion: v1
 kind: Service
