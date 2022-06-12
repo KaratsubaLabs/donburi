@@ -21,10 +21,6 @@ $ minikube addons enable ingress
 
 Next, we need to add a static route to our cluster, run:
 ```
-$ minikube ip
+echo "$(minikube ip) [testing-domain]" | sudo tee -a /etc/hosts
 ```
 
-Note the output and add the entry to your `/etc/hosts` file:
-```
-[minikube ip] [domain]
-```
