@@ -1,10 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: postgres-deployment
+  name: postgres-statefulset
   labels:
     app: postgres
 spec:
+  serviceName: 
   replicas: 1
   selector:
     matchLabels:
@@ -29,6 +30,19 @@ spec:
         - name: POSTGRES_DB
           valueFrom:
             secretKeyRef: { name: codimd-secret, key: postgresDatabase }
+        volumeMounts:
+        - name: data
+          mountPath: /data
+          readOnly: false
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: "hostpath"
+      resources:
+        requests:
+          storage: 500Mi
 ---
 apiVersion: v1
 kind: Service
