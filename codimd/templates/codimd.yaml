@@ -5,7 +5,7 @@ metadata:
   labels:
     app: codimd
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: codimd
@@ -26,6 +26,8 @@ spec:
         - name: CMD_SESSION_SECRET
           valueFrom:
             secretKeyRef: { name: codimd-secret, key: sessionSecret }
+        # - name: CMD_PROTOCOL_USESSL
+        #   value: 'true'
 ---
 apiVersion: v1
 kind: Service
