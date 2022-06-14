@@ -5,10 +5,10 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
 spec:
-  tls:
-  - hosts:
-    - {{ .Values.ingress.host }}
-    secretName:
+  # tls:
+  # - hosts:
+  #   - {{ .Values.ingress.host }}
+  #   secretName: codimd-cert
   rules:
   - host: {{ .Values.ingress.host }}
     http:
