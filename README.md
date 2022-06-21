@@ -24,3 +24,8 @@ Next, we need to add a static route to our cluster, run:
 echo "$(minikube ip) [testing-domain]" | sudo tee -a /etc/hosts
 ```
 
+## CHARTS LIST
+
+list of charts that we currently maintain include
+- codimd: markdown editor
+- registry: docker registry
