@@ -21,10 +21,25 @@ spec:
         ports:
         - containerPort: {{ .Values.registry.containerPort }}
         env:
-        volumeMounts:
-        - name: data
-          mountPath: /var/lib/registry
-          readOnly: false
+        # - name: REGISTRY_AUTH
+        #   value: "htpasswd"
+        # - name: REGISTRY_AUTH_HTPASSWD_REALM
+        #   value: "Registry Realm"
+        # - name: REGISTRY_AUTH_HTPASSWD_PATH
+        #   value: "/auth/htpasswd"
+        # - name: REGISTRY_HTTP_SECRET
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: {{ template "docker-registry.fullname" . }}-secret
+        #       key: haSharedSecret
+        # - name: REGISTRY_HTTP_TLS_CERTIFICATE
+        #   value: /etc/ssl/docker/tls.crt
+        # - name: REGISTRY_HTTP_TLS_KEY
+        #   value: /etc/ssl/docker/tls.key
+        # volumeMounts:
+        # - name: data
+        #   mountPath: /var/lib/registry
+        #   readOnly: false
   volumeClaimTemplates:
   - metadata:
       name: data
