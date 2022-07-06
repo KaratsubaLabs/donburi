@@ -1,6 +1,9 @@
 
 # helm charts
 
+**DEPRECATION NOTICE** - merged into monorepo with
+[tonkatsu](https://github.com/KaratsubaLabs/tonkatsu).
+
 Collection of karatusalabs helm charts
 
 ## LOCAL DEVELOPMENT
